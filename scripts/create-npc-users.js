@@ -17,12 +17,45 @@ const USER_TABLE = process.argv[2] || 'User-eufbm2g2krhd3kvltqwnkdayb4-NONE';
 
 // Name lists for each letter
 const NAMES = {
-  a: ['Alice', 'Adam', 'Aaron', 'Abigail', 'Andrew', 'Adrian', 'Alexandra', 'Alex', 'Anthony', 'Amanda'],
+  a: [
+    'Alice',
+    'Adam',
+    'Aaron',
+    'Abigail',
+    'Andrew',
+    'Adrian',
+    'Alexandra',
+    'Alex',
+    'Anthony',
+    'Amanda'
+  ],
   b: ['Bob', 'Ben', 'Brian', 'Blake', 'Brandon', 'Bradley', 'Bella', 'Bailey', 'Brianna', 'Beth'],
-  c: ['Charlie', 'Chris', 'Carl', 'Cameron', 'Caleb', 'Chloe', 'Claire', 'Caroline', 'Cynthia', 'Cole'],
+  c: [
+    'Charlie',
+    'Chris',
+    'Carl',
+    'Cameron',
+    'Caleb',
+    'Chloe',
+    'Claire',
+    'Caroline',
+    'Cynthia',
+    'Cole'
+  ],
   d: ['David', 'Daniel', 'Derek', 'Dylan', 'Dean', 'Diana', 'Danielle', 'Daisy', 'Donna', 'Drew'],
   e: ['Emma', 'Emily', 'Ethan', 'Evan', 'Eric', 'Elizabeth', 'Elena', 'Ella', 'Evelyn', 'Eddie'],
-  f: ['Frank', 'Fred', 'Felix', 'Finn', 'Faith', 'Fiona', 'Felicity', 'Frances', 'Fernando', 'Floyd'],
+  f: [
+    'Frank',
+    'Fred',
+    'Felix',
+    'Finn',
+    'Faith',
+    'Fiona',
+    'Felicity',
+    'Frances',
+    'Fernando',
+    'Floyd'
+  ],
   g: ['George', 'Gary', 'Grant', 'Greg', 'Grace', 'Gabriella', 'Gemma', 'Gina', 'Gabriel', 'Gavin'],
   h: ['Henry', 'Harry', 'Howard', 'Hunter', 'Hannah', 'Haley', 'Harper', 'Hope', 'Helen', 'Hugh'],
   i: ['Isaac', 'Ian', 'Ivan', 'Isaiah', 'Isabella', 'Iris', 'Ivy', 'Irene', 'Isla', 'India'],
@@ -32,14 +65,58 @@ const NAMES = {
   m: ['Mike', 'Matt', 'Mark', 'Max', 'Mason', 'Mary', 'Maria', 'Michelle', 'Megan', 'Madison'],
   n: ['Nathan', 'Nick', 'Noah', 'Neil', 'Nolan', 'Natalie', 'Nicole', 'Nina', 'Naomi', 'Nancy'],
   o: ['Oliver', 'Oscar', 'Owen', 'Omar', 'Olivia', 'Olive', 'Odette', 'Ophelia', 'Octavia', 'Orla'],
-  p: ['Peter', 'Paul', 'Patrick', 'Philip', 'Parker', 'Piper', 'Paige', 'Penelope', 'Phoebe', 'Pearl'],
-  q: ['Quinn', 'Quentin', 'Quincy', 'Queen', 'Quinton', 'Queenie', 'Quiana', 'Quilla', 'Quest', 'Quade'],
+  p: [
+    'Peter',
+    'Paul',
+    'Patrick',
+    'Philip',
+    'Parker',
+    'Piper',
+    'Paige',
+    'Penelope',
+    'Phoebe',
+    'Pearl'
+  ],
+  q: [
+    'Quinn',
+    'Quentin',
+    'Quincy',
+    'Queen',
+    'Quinton',
+    'Queenie',
+    'Quiana',
+    'Quilla',
+    'Quest',
+    'Quade'
+  ],
   r: ['Ryan', 'Robert', 'Richard', 'Roger', 'Ross', 'Rachel', 'Rebecca', 'Riley', 'Rose', 'Ruby'],
   s: ['Sam', 'Steve', 'Scott', 'Sean', 'Simon', 'Sarah', 'Sophia', 'Samantha', 'Stella', 'Sophie'],
   t: ['Tom', 'Tim', 'Tyler', 'Travis', 'Trevor', 'Tara', 'Taylor', 'Tiffany', 'Teresa', 'Tina'],
   u: ['Ulysses', 'Uriel', 'Urban', 'Umar', 'Ulrich', 'Uma', 'Ursula', 'Unity', 'Unique', 'Una'],
-  v: ['Victor', 'Vincent', 'Vince', 'Vernon', 'Vaughn', 'Victoria', 'Violet', 'Vanessa', 'Vera', 'Valerie'],
-  w: ['William', 'Walter', 'Wayne', 'Wesley', 'Wade', 'Wendy', 'Willow', 'Whitney', 'Wanda', 'Winnie'],
+  v: [
+    'Victor',
+    'Vincent',
+    'Vince',
+    'Vernon',
+    'Vaughn',
+    'Victoria',
+    'Violet',
+    'Vanessa',
+    'Vera',
+    'Valerie'
+  ],
+  w: [
+    'William',
+    'Walter',
+    'Wayne',
+    'Wesley',
+    'Wade',
+    'Wendy',
+    'Willow',
+    'Whitney',
+    'Wanda',
+    'Winnie'
+  ],
   x: ['Xavier', 'Xander', 'Xerxes', 'Xavi', 'Xylon', 'Xena', 'Ximena', 'Xyla', 'Xiomara', 'Xandra'],
   y: ['Yusuf', 'Yuri', 'Yale', 'Yosef', 'York', 'Yvonne', 'Yara', 'Yasmin', 'Yolanda', 'Yvette'],
   z: ['Zachary', 'Zane', 'Zack', 'Zeke', 'Zeus', 'Zoe', 'Zelda', 'Zara', 'Zuri', 'Zinnia']
@@ -58,14 +135,15 @@ function getRandomName(letter) {
 async function createNPCUser(letter) {
   const userId = randomUUID();
   const displayName = getRandomName(letter);
-  const email = `npc-${letter.toLowerCase()}@treasuresoftitan.local`;
+  const lastName = `${getRandomName(letter)}son`;
+  const email = `npc-${displayName}-${lastName}@tot.local`;
   const now = new Date().toISOString();
 
   const userItem = {
     id: userId,
     email,
     firstName: displayName,
-    lastName: 'Bot',
+    lastName,
     displayName,
     role: 13, // NPC role
     awsSub: 'npc',

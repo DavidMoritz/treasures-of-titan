@@ -6,13 +6,18 @@ import {
   TouchableOpacity,
   TextInput,
   Modal,
-  ActivityIndicator
+  ActivityIndicator,
+  Alert
 } from 'react-native';
+import { useRouter } from 'expo-router';
 import { useAuthUser } from '../hooks/useAuthUser';
+import { useCreateGame } from '../hooks/useCreateGame';
 import { colors, cardColors } from '../utils/colors';
 
 export default function HomeScreen() {
+  const router = useRouter();
   const { user, updateDisplayName } = useAuthUser();
+  const { createGame, isCreating } = useCreateGame();
   const [showEditName, setShowEditName] = useState(false);
   const [newName, setNewName] = useState('');
   const [isUpdating, setIsUpdating] = useState(false);
@@ -33,6 +38,20 @@ export default function HomeScreen() {
       console.error('Failed to update name:', error);
     } finally {
       setIsUpdating(false);
+    }
+  };
+
+  const handleNewGame = async () => {
+    try {
+      const game = await createGame(user.id);
+      if (game) {
+        router.push(`/lobby/${game.id}`);
+      } else {
+        Alert.alert('Error', 'Failed to create game. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error creating game:', error);
+      Alert.alert('Error', 'Failed to create game. Please try again.');
     }
   };
 
@@ -69,8 +88,16 @@ export default function HomeScreen() {
       </View>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.primaryButton}>
-          <Text style={styles.primaryButtonText}>New Game</Text>
+        <TouchableOpacity
+          style={styles.primaryButton}
+          onPress={handleNewGame}
+          disabled={isCreating}
+        >
+          {isCreating ? (
+            <ActivityIndicator color={colors.background} />
+          ) : (
+            <Text style={styles.primaryButtonText}>New Game</Text>
+          )}
         </TouchableOpacity>
         <TouchableOpacity style={styles.secondaryButton}>
           <Text style={styles.secondaryButtonText}>Join Game</Text>
