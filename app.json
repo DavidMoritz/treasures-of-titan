@@ -1,30 +1,41 @@
 {
   "expo": {
-    "name": "treasures-of-titan-app",
-    "slug": "treasures-of-titan-app",
+    "name": "Treasures of Titan",
+    "slug": "treasures-of-titan",
+    "scheme": "treasuresoftitan",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "newArchEnabled": true,
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": false,
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#F5F5DC"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.moritzcompany.treasuresoftitan",
+      "buildNumber": "1"
     },
     "android": {
+      "package": "com.moritzcompany.treasuresoftitan",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+        "backgroundColor": "#F5F5DC"
+      }
     },
+    "plugins": ["expo-router"],
     "web": {
+      "bundler": "metro",
+      "output": "static",
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "treasures-of-titan"
+      }
     }
   }
 }

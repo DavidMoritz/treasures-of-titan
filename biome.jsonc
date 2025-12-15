@@ -1,0 +1,93 @@
+{
+  "root": true,
+  "$schema": "https://biomejs.dev/schemas/2.3.8/schema.json",
+
+  "files": {
+    "includes": [
+      "**",
+      "!coverage",
+      "!scripts",
+      "!src/API.ts",
+      "!amplify",
+      "!node_modules",
+      "!*.config.js"
+    ]
+  },
+
+  "overrides": [
+    {
+      "includes": ["App.tsx"],
+      "linter": { "rules": { "style": { "useFilenamingConvention": "off" } } }
+    },
+    {
+      "includes": ["app/**/*.tsx"],
+      "linter": { "rules": { "style": { "useFilenamingConvention": "off" } } }
+    },
+    {
+      "includes": ["__mocks__/**/*.js"],
+      "linter": {
+        "rules": {
+          "style": { "useFilenamingConvention": "off" },
+          "correctness": { "noUndeclaredVariables": "off" }
+        }
+      }
+    },
+    {
+      "includes": ["__tests__/**/*.{ts,tsx}"],
+      "linter": {
+        "rules": {
+          "correctness": { "noUndeclaredVariables": "off" },
+          "style": { "noMagicNumbers": "off" }
+        }
+      }
+    },
+    {
+      "includes": [
+        "src/__mocks__/**/*.{ts,tsx}",
+        "src/components/**/*",
+        "src/hooks/**/*.{ts,tsx}"
+      ],
+      "linter": { "rules": { "style": { "useFilenamingConvention": "off" } } }
+    }
+  ],
+
+  "formatter": {
+    "attributePosition": "auto",
+    "bracketSpacing": true,
+    "enabled": true,
+    "formatWithErrors": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 100
+  },
+
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "jsxQuoteStyle": "double",
+      "semicolons": "always",
+      "trailingCommas": "none",
+      "arrowParentheses": "always"
+    }
+  },
+
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "correctness": {
+        "noUnusedVariables": "error",
+        "noUndeclaredVariables": "warn"
+      },
+      "style": {
+        "useConst": "error",
+        "noNonNullAssertion": "warn"
+      },
+      "suspicious": {
+        "noConsoleLog": "off",
+        "noExplicitAny": "warn"
+      }
+    }
+  }
+}
