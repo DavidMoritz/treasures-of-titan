@@ -77,6 +77,13 @@ export default function HomeScreen() {
         <Text style={styles.userRating}>Rating: {user.rating}</Text>
       </View>
 
+      <TouchableOpacity
+        style={styles.myGamesButton}
+        onPress={() => router.push('/my-games')}
+      >
+        <Text style={styles.myGamesButtonText}>📋 My Games</Text>
+      </TouchableOpacity>
+
       <View style={styles.colorPreview}>
         <Text style={styles.colorPreviewTitle}>Card Colors</Text>
         <View style={styles.colorRow}>
@@ -213,6 +220,26 @@ const styles = StyleSheet.create({
   userRating: {
     fontSize: 16,
     color: colors.textSecondary
+  },
+  myGamesButton: {
+    backgroundColor: colors.surface,
+    paddingVertical: 14,
+    borderRadius: 10,
+    marginHorizontal: 20,
+    marginBottom: 20,
+    alignItems: 'center',
+    borderWidth: 2,
+    borderColor: colors.primary,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2
+  },
+  myGamesButtonText: {
+    color: colors.primary,
+    fontSize: 16,
+    fontWeight: 'bold'
   },
   colorPreview: {
     backgroundColor: colors.surface,
