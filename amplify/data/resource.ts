@@ -9,10 +9,12 @@ const schema = a.schema({
 
   User: a
     .model({
-      email: a.string().required(),
+      email: a.string(),
       firstName: a.string(),
       lastName: a.string(),
       displayName: a.string(),
+      role: a.integer().default(9), // 0 = Cognito user, 9 = anonymous user, 13 = NPC
+      awsSub: a.string().default('anonymous'), // Cognito user ID, or "anonymous"
       rating: a.integer().default(1200),
       gameParticipations: a.hasMany('GamePlayer', 'userId'),
       createdAt: a.datetime(),

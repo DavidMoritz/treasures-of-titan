@@ -53,10 +53,16 @@ export const colors = {
   info: '#2196F3',
 
   // Text
+  text: '#212121',
   textPrimary: '#212121',
   textSecondary: '#757575',
   textDisabled: '#BDBDBD',
   textOnDark: '#FFFFFF',
+
+  // UI Components
+  primary: '#9C27B0', // Purple from card colors
+  surface: '#FFFFFF',
+  border: '#E0E0E0',
 
   // Overlay
   overlay: 'rgba(0, 0, 0, 0.5)',
