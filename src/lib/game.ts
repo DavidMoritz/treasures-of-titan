@@ -179,6 +179,14 @@ export async function joinGame(gameId: string, userId: string): Promise<void> {
     });
 
     const currentPlayers = playersResult.data || [];
+
+    // Check if user is already in the game
+    const alreadyInGame = currentPlayers.some((player) => player.userId === userId);
+    if (alreadyInGame) {
+      console.log('[joinGame] User already in game, skipping join');
+      return; // Silently return - user is already in the game
+    }
+
     const playerNumber = currentPlayers.length + 1;
 
     // Get game to check max players
