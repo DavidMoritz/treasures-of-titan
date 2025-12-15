@@ -99,7 +99,10 @@ export default function HomeScreen() {
             <Text style={styles.primaryButtonText}>New Game</Text>
           )}
         </TouchableOpacity>
-        <TouchableOpacity style={styles.secondaryButton}>
+        <TouchableOpacity
+          style={styles.secondaryButton}
+          onPress={() => router.push('/join-game')}
+        >
           <Text style={styles.secondaryButtonText}>Join Game</Text>
         </TouchableOpacity>
       </View>
