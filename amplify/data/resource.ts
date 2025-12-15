@@ -26,7 +26,6 @@ const schema = a.schema({
     .model({
       name: a.string().required(),
       hostId: a.id().required(),
-      host: a.belongsTo('User', 'hostId'),
       status: a.enum(['waiting', 'active', 'completed']),
       currentTurnPlayerId: a.id(),
       currentBattleNumber: a.integer().default(0),
@@ -65,9 +64,7 @@ const schema = a.schema({
       game: a.belongsTo('Game', 'gameId'),
       battleNumber: a.integer().required(),
       winnerId: a.id(),
-      winner: a.belongsTo('GamePlayer', 'winnerId'),
       resourceRewardId: a.id(),
-      resourceReward: a.belongsTo('ResourceCard', 'resourceRewardId'),
       submissions: a.hasMany('BattleSubmission', 'battleId'),
       status: a.enum(['pending', 'submitted', 'completed']),
       completedAt: a.datetime(),
@@ -85,11 +82,8 @@ const schema = a.schema({
       gamePlayerId: a.id().required(),
       gamePlayer: a.belongsTo('GamePlayer', 'gamePlayerId'),
       card1Id: a.id().required(),
-      card1: a.belongsTo('PlayerCard', 'card1Id'),
       card2Id: a.id().required(),
-      card2: a.belongsTo('PlayerCard', 'card2Id'),
       card3Id: a.id().required(),
-      card3: a.belongsTo('PlayerCard', 'card3Id'),
       totalValue: a.integer().required(),
       submittedAt: a.datetime()
     })
@@ -108,7 +102,6 @@ const schema = a.schema({
       rank: a.integer().default(0),
       // For progress cards
       progressCardId: a.id(),
-      progressCard: a.belongsTo('ProgressCard', 'progressCardId'),
       group: a.enum(['alien', 'allied', 'military', 'native']),
       // State
       isInHand: a.boolean().default(true),
@@ -137,7 +130,6 @@ const schema = a.schema({
       gamePlayerId: a.id().required(),
       gamePlayer: a.belongsTo('GamePlayer', 'gamePlayerId'),
       resourceCardId: a.id().required(),
-      resourceCard: a.belongsTo('ResourceCard', 'resourceCardId'),
       acquiredAt: a.datetime()
     })
     .authorization((allow) => [allow.publicApiKey()]),
