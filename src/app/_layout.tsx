@@ -46,22 +46,8 @@ export default function RootLayout() {
   return (
     <Stack
       screenOptions={{
-        headerStyle: {
-          backgroundColor: colors.primary
-        },
-        headerTintColor: colors.background,
-        headerTitleStyle: {
-          fontWeight: 'bold'
-        }
+        headerShown: false
       }}
-    >
-      <Stack.Screen
-        name="index"
-        options={{
-          title: 'Treasures of Titan',
-          headerShown: true
-        }}
-      />
-    </Stack>
+    />
   );
 }

@@ -75,6 +75,9 @@ export default function LobbyScreen() {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
+        <TouchableOpacity style={styles.backButtonHeader} onPress={() => router.back()}>
+          <Text style={styles.backButtonHeaderText}>← Back</Text>
+        </TouchableOpacity>
         <Text style={styles.title}>Game Lobby</Text>
         <View style={styles.codeContainer}>
           <Text style={styles.codeLabel}>Game Code:</Text>
@@ -224,6 +227,19 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface,
     borderBottomWidth: 1,
     borderBottomColor: colors.border
+  },
+  backButtonHeader: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    zIndex: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 8
+  },
+  backButtonHeaderText: {
+    color: colors.primary,
+    fontSize: 16,
+    fontWeight: '600'
   },
   title: {
     fontSize: 28,
