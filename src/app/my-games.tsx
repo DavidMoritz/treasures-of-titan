@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   FlatList,
-  RefreshControl
+  RefreshControl,
+  SafeAreaView
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useAuthUser } from '@/hooks/useAuthUser';
@@ -56,7 +57,7 @@ export default function MyGamesScreen() {
   const activeGames = games.filter((g) => g.status === 'active');
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity style={styles.backButtonHeader} onPress={() => router.back()}>
           <Text style={styles.backButtonHeaderText}>← Back</Text>
@@ -153,7 +154,7 @@ export default function MyGamesScreen() {
           }
         />
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 

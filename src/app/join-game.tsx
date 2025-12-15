@@ -7,7 +7,8 @@ import {
   ActivityIndicator,
   FlatList,
   RefreshControl,
-  Alert
+  Alert,
+  SafeAreaView
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useAuthUser } from '@/hooks/useAuthUser';
@@ -66,7 +67,7 @@ export default function JoinGameScreen() {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity style={styles.backButtonHeader} onPress={() => router.back()}>
           <Text style={styles.backButtonHeaderText}>← Back</Text>
@@ -138,7 +139,7 @@ export default function JoinGameScreen() {
           }
         />
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 

@@ -8,7 +8,8 @@ import {
   ScrollView,
   Modal,
   FlatList,
-  Alert
+  Alert,
+  SafeAreaView
 } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useAuthUser } from '@/hooks/useAuthUser';
@@ -73,7 +74,8 @@ export default function LobbyScreen() {
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <SafeAreaView style={styles.safeArea}>
+      <ScrollView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity style={styles.backButtonHeader} onPress={() => router.back()}>
           <Text style={styles.backButtonHeaderText}>← Back</Text>
@@ -188,13 +190,17 @@ export default function LobbyScreen() {
         </View>
       </Modal>
     </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
     backgroundColor: colors.background
+  },
+  container: {
+    flex: 1
   },
   loadingContainer: {
     flex: 1,

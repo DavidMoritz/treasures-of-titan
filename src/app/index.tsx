@@ -7,7 +7,8 @@ import {
   TextInput,
   Modal,
   ActivityIndicator,
-  Alert
+  Alert,
+  SafeAreaView
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useAuthUser } from '../hooks/useAuthUser';
@@ -56,7 +57,7 @@ export default function HomeScreen() {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Treasures of Titan</Text>
         <Text style={styles.subtitle}>A Strategic Card Battle Game</Text>
@@ -154,7 +155,7 @@ export default function HomeScreen() {
           </View>
         </View>
       </Modal>
-    </View>
+    </SafeAreaView>
   );
 }
 
